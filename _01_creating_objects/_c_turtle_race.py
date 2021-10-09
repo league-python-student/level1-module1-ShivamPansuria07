@@ -2,7 +2,7 @@
 Turtle Race
 """
 import turtle
-import random
+from random import randint
 from PIL import Image
 
 # ================= Instructions at the bottom of this file ===================
@@ -33,15 +33,36 @@ if __name__ == '__main__':
     draw_background()
 
     # TODO 1) Create an empty list of turtles
-
+    turtles = []
     # TODO 2) Create a new turtle and set its shape to 'turtle
+    num = 195
+    flag = False
+    for i in range(8):
+        if i > 0:
+            num -= 55
+        if i >=6:
+           flag = True
+        i = turtle.Turtle()
+        i.penup()
+        i.shape('turtle')
+        i.speed(3)
+        i.goto(-415, num)
+        turtles.append(i)
+    while flag:
+        for index in range(len(turtles)):
+            xturt = turtles[index].xcor()
+            turtles[index].forward(randint(1,5))
+            if turtles[index].xcor() == 335:
+                print("Turtle Won!")
+                flag = False
+
+
+
+
+
+
 
     # TODO 3) Set the turtle's speed to 3
-
-    # TODO 4) Set the turtle's pen up
-
-    # TODO 5) Use the turtle's goto() method to set its position on the left
-    #  side of the screen
 
     # TODO 6) use a loop to repeat the previous instructions and create
     #  8 turtles lined up on the left side of the screen
@@ -50,7 +71,7 @@ if __name__ == '__main__':
     # TODO 7) Move each turtle forward a random distance between 1 and 20
 
     # TODO 8) Create a loop to keep moving each turtle until a turtle
-    #  crosses the finish line
+    #  crosses the finish linez`
     #  *HINT* click on the window to print the corresponding x, y location
 
     # TODO 9) When a turtle crosses the finish line, stop the race and
